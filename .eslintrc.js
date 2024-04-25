@@ -9,7 +9,7 @@ module.exports = {
     'plugin:@eslint/js/recommended', // Assuming this is a valid plugin configuration
   ],
   parserOptions: {
-    ecmaVersion: 12, // or 2020
+    ecmaVersion: 2020, // or 2020
     sourceType: 'module',
   },
   rules: {
