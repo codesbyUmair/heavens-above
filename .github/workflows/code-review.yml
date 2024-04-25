@@ -23,5 +23,4 @@ jobs:
       run: npx eslint . --fix
 
     - name: Run tests
-      # This should be defined in your package.json
       run: npm test
