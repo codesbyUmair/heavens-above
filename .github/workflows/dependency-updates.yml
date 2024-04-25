@@ -1,0 +1,26 @@
+name: Dependency Updates
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Weekly on Sunday at midnight
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+    - run: npm ci
+    - name: Update dependencies
+      run: npm update
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        commit-message: Update dependencies
+        title: 'Update dependencies'
+        body: 'This PR updates the project dependencies.'
+        branch: 'update-dependencies'
