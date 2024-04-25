@@ -19,6 +19,7 @@ module.exports = {
     globalsVar1: 'readonly', // Example of setting a global variable
   },
   plugins: [
-    '@eslint/js', // Assuming this is the name of a valid plugin
-  ],
+    '@eslint/js', 
+    "react"
+    ],
 };
