@@ -9,18 +9,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14.x'
-    - run: npm ci
-    - name: Update dependencies
+        node-version: '12.x'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Check for outdated dependencies
+      run: npm outdated
+
+    - name: Update Dependencies
       run: npm update
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      with:
-        commit-message: Update dependencies
-        title: 'Update dependencies'
-        body: 'This PR updates the project dependencies.'
-        branch: 'update-dependencies'
+
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git commit -m "Update dependencies" -a || echo "No changes to commit"
+
+    - name: Push changes
+      run: git push
+
+ 
