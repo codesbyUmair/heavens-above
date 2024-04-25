@@ -11,17 +11,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Use Node.js
+    - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '14.x'
 
-    - name: Install Dependencies
+    - name: Install dependencies
       run: npm install
 
-    - name: Run Lint
-      run: npm run lint
+    - name: Run linting
+      run: npx eslint . --fix
 
-
-    - name: Run Tests
+    - name: Run tests
+      # This should be defined in your package.json
       run: npm test

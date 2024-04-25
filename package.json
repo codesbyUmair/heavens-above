@@ -6,7 +6,8 @@
   "main": "run.js",
   "scripts": {
     "start": "node run.js",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
