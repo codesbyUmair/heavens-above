@@ -20,4 +20,3 @@ jobs:
 
     - name: Run custom script
       run: echo "Insert custom script command here"
-      # Replace the echo command with the actual command for your custom script.
