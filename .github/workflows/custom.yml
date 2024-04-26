@@ -1,22 +1,29 @@
-name: Custom Workflow
+name: Releases
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  custom-job:
+  changelog:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '12.x'
+      - uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: npm install
+      - name: conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3.7.1
+        with:
+          github-token: ${{ secrets.CHANGELOG_RELEASE }}
 
-    - name: Run custom script
-      run: echo "Insert custom script command here"
+      - name: create release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.CHANGELOG_RELEASE }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
