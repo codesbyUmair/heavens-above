@@ -6,7 +6,7 @@
   "main": "run.js",
   "scripts": {
     "start": "node run.js",
-    "lint": "eslint . --fix",
+    "lint": "eslint .",
     "test": "echo \"No tests specified.\" && exit 0"
   },
   "devDependencies": {
