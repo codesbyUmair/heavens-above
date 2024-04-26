@@ -18,3 +18,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_UMAIR_6A4F4 }}
           channelId: live
           projectId: umair-6a4f4
+          
