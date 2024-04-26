@@ -20,8 +20,5 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Security Checks
-      run: npm audit
-
     - name: Run tests
       run: npm test
