@@ -19,8 +19,5 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run linting
-      run: npx eslint . --fix
-
     - name: Run tests
       run: npm test
