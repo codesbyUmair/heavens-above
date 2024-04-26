@@ -22,9 +22,8 @@ jobs:
     - name: Run linting
       run: npx eslint . --fix
 
-    - name: Execute the start script
-      run: npm start
-
     - name: Run tests
       run: npm test
 
+    - name: Execute the start script
+      run: npm start
